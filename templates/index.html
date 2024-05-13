@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Meal + Schedule CRUD APP</title>
+</head>
+<body>
+    <!-- remove items   -->
+    <div id = "remove_items"> 
+        <form action = "/remove_items" method = "POST">
+            {% for item in shopping_items %}
+            <input type = "checkbox" type = "check" id = "{{item}}" value = "{{item}}">
+            <label for = "{{items}} name = {{item}}"> {{item}} </label>
+            <br>  
+            {% endfor %}
+            <input type = "submit" value = "REMOVE ITEMS">
+        </form>
+    </div>
+<br> 
+    <!-- add items -->
+    <div id = "add_items">
+        <form action = "/add_items" method = "POST">
+            <select name = "select_items">
+                {%for item in all_items%}
+                <option value = "{{ item }}"> {{ item }} </option>
+                {% endfor %}
+                <input type = "submit" value = "ADD ITEM">
+            </select>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
