@@ -30,6 +30,9 @@ def remove_items():
 
     return render_template("index.html", all_items = session["all_items"], shopping_items = session["shopping_items"])
 
+@app.route("/update_item", methods=["POST"])
+def update_item():
+    pass
 
 def get_db():
     db = getattr(g, '_database', None)

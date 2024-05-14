@@ -7,8 +7,9 @@
     <!-- remove items   -->
     <div id = "remove_items"> 
         <form action = "/remove_items" method = "POST">
-            {% for item in shopping_items %}
-            <input type = "checkbox" type = "check" id = "{{item}}" value = "{{item}}">
+            {% for item in shopping_items%}
+            <!-- the error was again, quite stupid; i had specified type 2x, so name wasn't be declared as check :/  -->
+            <input type = "checkbox" name = "check" id = "{{item}}" value = "{{item}}"> 
             <label for = "{{items}} name = {{item}}"> {{item}} </label>
             <br>  
             {% endfor %}
@@ -27,6 +28,9 @@
             </select>
         </form>
     </div>
+
+    <!-- update form  -->
+  
     <script src="script.js"></script>
 </body>
 </html>

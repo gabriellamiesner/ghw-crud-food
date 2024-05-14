@@ -27,3 +27,6 @@ application needs:
     - able to add/update/delete individual items if you need more seasonings or already have some of the food at home 
     - count: integer (number of grocery items needed)
     - grocery id: text (name of the grocery item)
+
+## resources
+- https://www.youtube.com/watch?v=v3CSQkPJtAc&ab_channel=PythonSimplified
