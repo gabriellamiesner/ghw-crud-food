@@ -13,10 +13,11 @@ chicken_burgers = Recipe("smashed avocado chicken burgers", "https://cooking.nyt
 bagels = Recipe("New York Style Bagels", 'https://cooking.nytimes.com/guides/81-how-to-make-bagels', "barley malt syrup\npacket active dry yeast\nbread flour\nDiamond Crystal kosher salt\nbaking soda\neverything bagel seasoning") 
 recipe_book = [salmon_teriyaki, quinoa_salad, chicken_burgers, bagels]
 
-connection = sqlite3.connect("grocery_list.db")
+# connection = sqlite3.connect("grocery_list.db") this was the mistake; forgot to change the db connection 🤦‍♀️
+connection = sqlite3.connect("meal_plan.db")
 cursor = connection.cursor()
 
-cursor.execute("drop table if exists recipes")
+cursor.execute('drop table if exists recipes')
 cursor.execute("create table recipes (name TEXT, instructions TEXT, grocery_items TEXT)")
 for i in range(len(recipe_book)):
   cursor.execute("insert into recipes (name, instructions, grocery_items) values (?, ?, ?)",(recipe_book[i].name, recipe_book[i].instructions, recipe_book[i].grocery_items))

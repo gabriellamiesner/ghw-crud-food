@@ -37,7 +37,7 @@ def update_item():
 def get_db():
     db = getattr(g, '_database', None)
     if db is None:
-        grocery_list = g._database = sqlite3.connect('grocery_list.db')
+        grocery_list = g._database = sqlite3.connect('db/grocery_list/grocery_list.db')
         cursor = grocery_list.cursor()
         cursor.execute('select name from groceries')
         all_data = cursor.fetchall()
@@ -48,14 +48,15 @@ def get_db():
         shopping_list = shopping_list[:5]
         grocery_list.close()
 
-        # meal_plan = g._database = sqlite3.connect('meal_plan.db')
-        # recipe_cursor = meal_plan.cursor()
-        # recipe_cursor.execute('select * from recipes')
-        # recipe_names = recipe_cursor.fetchall()
-        # print(recipe_names)
-        # meal_plan.close()
+        meal_plan = g._database = sqlite3.connect('db/meal_plan/meal_plan.db')
+        recipe_cursor = meal_plan.cursor()
+        recipe_cursor.execute('select * from recipes')
+        recipe_names = recipe_cursor.fetchall()
+        print(recipe_names)
+        meal_plan.close()
+        
 
-        schedule_plan = g._database = sqlite3.connect('schedule_plan.db')
+        schedule_plan = g._database = sqlite3.connect('db/schedule_plan/schedule_plan.db')
         schedule_cursor = schedule_plan.cursor()
         schedule_cursor.execute('select * from plans')
         schedule_items = schedule_cursor.fetchall()
@@ -63,7 +64,7 @@ def get_db():
 
         
         
-    return all_data, shopping_list, schedule_items
+    return all_data, shopping_list, recipe_names, schedule_items
 
 @app.teardown_appcontext
 def close_connection(exception):
