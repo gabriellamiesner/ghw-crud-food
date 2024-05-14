@@ -8,8 +8,8 @@ app.config["SESSION_COOKIE_NAME"] = 'global_hack_week'
 
 @app.route("/", methods = ["POST", "GET"])
 def index():
-    session["all_items"], session["shopping_items"] = get_db()
-    return render_template("index.html", all_items = session["all_items"], shopping_items = session["shopping_items"])
+    session["all_items"], session["shopping_items"], session["schedule_items"] = get_db()
+    return render_template("index.html", all_items = session["all_items"], shopping_items = session["shopping_items"],  schedule_items = session['schedule_items'])
 
 @app.route("/add_items", methods = ["POST"])
 def add_items():
@@ -37,8 +37,8 @@ def update_item():
 def get_db():
     db = getattr(g, '_database', None)
     if db is None:
-        db = g._database = sqlite3.connect('grocery_list.db')
-        cursor = db.cursor()
+        grocery_list = g._database = sqlite3.connect('grocery_list.db')
+        cursor = grocery_list.cursor()
         cursor.execute('select name from groceries')
         all_data = cursor.fetchall()
         # all_data = [item for item in g]
@@ -46,8 +46,24 @@ def get_db():
         shopping_list = all_data.copy()
         random.shuffle(shopping_list)
         shopping_list = shopping_list[:5]
-        print(shopping_list)
-    return all_data, shopping_list
+        grocery_list.close()
+
+        # meal_plan = g._database = sqlite3.connect('meal_plan.db')
+        # recipe_cursor = meal_plan.cursor()
+        # recipe_cursor.execute('select * from recipes')
+        # recipe_names = recipe_cursor.fetchall()
+        # print(recipe_names)
+        # meal_plan.close()
+
+        schedule_plan = g._database = sqlite3.connect('schedule_plan.db')
+        schedule_cursor = schedule_plan.cursor()
+        schedule_cursor.execute('select * from plans')
+        schedule_items = schedule_cursor.fetchall()
+        schedule_plan.close()
+
+        
+        
+    return all_data, shopping_list, schedule_items
 
 @app.teardown_appcontext
 def close_connection(exception):

@@ -4,6 +4,16 @@
     <title>Meal + Schedule CRUD APP</title>
 </head>
 <body>
+    <!-- {% for item in recipe_names%}
+    <p> {{item}} </p>
+    {%endfor%} -->
+
+    {% for item in schedule_items%}
+    <h1> {{item[0]}} - {{item[1]}}</h1>
+    <h2> {{item[2]}} </h2>
+    <p> location: {{item[3]}} </p>
+    {%endfor%}
+
     <!-- remove items   -->
     <div id = "remove_items"> 
         <form action = "/remove_items" method = "POST">

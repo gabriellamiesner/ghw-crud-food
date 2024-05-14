@@ -1,15 +1,68 @@
 import sqlite3
 
-class Recipe:
-  def __init__(self, name, ingredients, instructions, ) -> None:
-    self.name = name
-    self.ingredients = ingredients
-    self.instructions = instructions
-
-recipe_book = []
-recipe_book.append(Recipe("New York Style Bagels", 
-                   {'barley malt syrup': 1, "packet active dry yeast": 1, 'bread flour': 1, 'Diamond Crystal kosher salt': 1, 'baking soda':1, 'everything bagel seasoning': 2}, 
-                   'https://cooking.nytimes.com/guides/81-how-to-make-bagels'))
+groceries = [
+  "apples",
+  "bananas",
+  "clemintines",
+  "dill",
+  "eggs",
+  "flour",
+  "granola",
+  "honey",
+  "ice cream",
+  "juice",
+  "ketchup",
+  "lemon",
+  "margarine",
+  "onion",
+  "potatoes",
+  "rosmary",
+  "salt",
+  "thyme",
+  "vinegar",
+  "watermelon",
+  "pears",
+  "cucumbers",
+  "garlic",
+  "carrots",
+  "pastries",
+  "eggplants",
+  "milk",
+  "coffee",
+  "tea",
+  "rice",
+  "noodles",
+  "lentils",
+  "sweet potatoes",
+  "strawberries",
+  "cranberries",
+  "mangos",
+  "pappers",
+  "zuccinis",
+  "lime",
+  "broth",
+  "mushrooms",
+  "chicken",
+  "beef",
+  "pork",
+  "fish",
+  "cream",
+  "paprika",
+  "tumeric",
+  "cinamon",
+  "pumpkin",
+  "basil",
+  "tomatoes",
+  "bread",
+  "cake",
+  "chocolate",
+  "gum",
+  "pinapple",
+  "oranges",
+  "lettuce",
+  "cheese",
+  "cilantro"
+]
 
 groceries = sorted(groceries)
 

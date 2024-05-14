@@ -1,5 +1,5 @@
 
-## quick pics 
+## quick picks 
 - bagels  https://cooking.nytimes.com/guides/81-how-to-make-bagels
 - salmon teriyaki https://cooking.nytimes.com/recipes/1024206-salmon-teriyaki
 - quinoa salad https://cooking.nytimes.com/recipes/1024829-quinoa-salad
