@@ -4,20 +4,31 @@
     <title>Meal + Schedule CRUD APP</title>
 </head>
 <body>
-    <!-- {% for item in recipe_names%}
+   <p>Number of Home Cooked Meals This Week: {{num_meals_home}}</p> 
+   <p> Number of Servings Cooked This Week: {{week_servings}} </p>
+    <p> Recipes Cooked at Home This Week: {{week_recipe_book}}</p>
+    
+    <div id = "weekly_groceries"> 
+        {{grocery_list}}
+        </div>
+    <!-- {%for item in servings %}
     <p> {{item}} </p>
     {%endfor%} -->
 
-    {% for item in schedule_items%}
+    <!-- {% for item in recipe_names%}
+    <p> {{item[0]}} - Feeds {{item[3]}} </p>
+    {%endfor%} -->
+
+    <!-- {% for item in schedule_items%}
     <h1> {{item[0]}} - {{item[1]}}</h1>
     <h2> {{item[2]}} </h2>
     <p> location: {{item[3]}} </p>
-    {%endfor%}
+    {%endfor%} --> 
 
     <!-- remove items   -->
     <div id = "remove_items"> 
         <form action = "/remove_items" method = "POST">
-            {% for item in shopping_items%}
+            {% for item in all_items%}
             <!-- the error was again, quite stupid; i had specified type 2x, so name wasn't be declared as check :/  -->
             <input type = "checkbox" name = "check" id = "{{item}}" value = "{{item}}"> 
             <label for = "{{items}} name = {{item}}"> {{item}} </label>
@@ -26,6 +37,8 @@
             <input type = "submit" value = "REMOVE ITEMS">
         </form>
     </div>
+<br> 
+<br> 
 <br> 
     <!-- add items -->
     <div id = "add_items">
@@ -38,8 +51,25 @@
             </select>
         </form>
     </div>
-
+<br> 
+<br> 
+<br> 
     <!-- update form  -->
+    <div id = "update_items">
+        <form action = "/update_items" method = "POST">
+            <label for = "old_item"> Old Grocery List Item</label>
+            <select id = "old_item" name = "old_item">
+                {%for item in all_items%}
+                <option value = "{{ item }}"> {{ item }} </option>
+                {%endfor%}
+            </select>
+            <br> 
+            <br> 
+            <label for = "new_item"> New Grocery List Item </label>
+            <input id = "new_item" name = "new_item" required>
+            <input type = "submit" value = "UPDATE ITEM"> 
+        </form>
+    </div>
   
     <script src="script.js"></script>
 </body>
